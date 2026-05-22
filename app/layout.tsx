@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: SITE.name, template: '%s — Brew 0' },
+  title: { default: SITE.name, template: '%s — Chai' },
   description: SITE.description,
   applicationName: SITE.name,
   authors: [{ name: 'Protocol 418' }],
