@@ -22,6 +22,20 @@
   to   { transform: translate(-25%, -25%); }
 }
 
+.tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: background 500ms ease, opacity 500ms ease;
+}
+
+.tint[data-slide="web"]      { background: radial-gradient(ellipse at center, rgba(60, 100, 160, 0.12), transparent 60%); }
+.tint[data-slide="app"]      { background: transparent; }
+.tint[data-slide="vscode"]   { background: radial-gradient(ellipse at center, rgba(234, 90, 31, 0.08), transparent 60%); }
+.tint[data-slide="terminal"] { background: radial-gradient(ellipse at center, rgba(38, 162, 105, 0.10), transparent 70%); }
+.tint[data-slide="intro"], .tint[data-slide="comparativa"], .tint[data-slide="cierre"] { background: transparent; }
+
 @media (prefers-reduced-motion: reduce) {
   .lines { animation: none; opacity: 0.06; }
 }

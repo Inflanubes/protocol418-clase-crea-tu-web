@@ -19,6 +19,13 @@
   gap: var(--space-12);
   align-items: center;
   margin-top: var(--space-8);
+  transition: filter 200ms ease, opacity 200ms ease;
+}
+
+.grid[data-panel-open="true"] .mock {
+  filter: saturate(0.5);
+  opacity: 0.5;
+  transition: filter 200ms ease, opacity 200ms ease;
 }
 
 .mock {
@@ -34,3 +41,27 @@
 
 .compact .title { font-size: clamp(48px, 6vw, 72px); }
 .compact .grid { grid-template-columns: 1fr 300px; }
+
+.triggerWrap {
+  margin-top: var(--space-8);
+  display: flex;
+  justify-content: center;
+}
+
+.trigger {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.trigger:hover, .trigger:focus-visible {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  outline: none;
+}

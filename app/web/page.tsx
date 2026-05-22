@@ -1,5 +1,6 @@
 import { FlavorSlide } from '@/components/flavor/FlavorSlide';
 import { WebMock } from '@/components/mocks/WebMock';
+import { WEB_DETAIL } from '@/lib/content/web';
 import { SLIDES } from '@/lib/slides';
 
 export default function WebPage() {
@@ -20,6 +21,7 @@ export default function WebPage() {
         'Dependes de mantener la pestaña abierta',
       ]}
       mock={<WebMock />}
+      detail={WEB_DETAIL}
     />
   );
 }

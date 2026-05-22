@@ -1,5 +1,6 @@
 import { FlavorSlide } from '@/components/flavor/FlavorSlide';
 import { TerminalMock } from '@/components/mocks/TerminalMock';
+import { TERMINAL_DETAIL } from '@/lib/content/terminal';
 import { SLIDES } from '@/lib/slides';
 
 export default function TerminalPage() {
@@ -19,6 +20,7 @@ export default function TerminalPage() {
         'Solo CLI (no hay UI gráfica para los que la prefieran)',
       ]}
       mock={<TerminalMock />}
+      detail={TERMINAL_DETAIL}
     />
   );
 }

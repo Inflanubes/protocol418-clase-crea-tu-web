@@ -1,5 +1,6 @@
 import { FlavorSlide } from '@/components/flavor/FlavorSlide';
 import { VSCodeMock } from '@/components/mocks/VSCodeMock';
+import { VSCODE_DETAIL } from '@/lib/content/vscode';
 import { SLIDES } from '@/lib/slides';
 
 export default function VSCodePage() {
@@ -20,6 +21,7 @@ export default function VSCodePage() {
         'Curva de aprendizaje de los modos (ask / agent / plan)',
       ]}
       mock={<VSCodeMock />}
+      detail={VSCODE_DETAIL}
     />
   );
 }

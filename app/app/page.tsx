@@ -1,5 +1,6 @@
 import { FlavorSlide } from '@/components/flavor/FlavorSlide';
 import { AppMock } from '@/components/mocks/AppMock';
+import { APP_DETAIL } from '@/lib/content/app';
 import { SLIDES } from '@/lib/slides';
 
 export default function AppPage() {
@@ -20,6 +21,7 @@ export default function AppPage() {
         'Sigue sin acceso al repo',
       ]}
       mock={<AppMock />}
+      detail={APP_DETAIL}
     />
   );
 }
