@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { SLIDES } from '@/lib/slides';
+import { SLIDES, TOTAL_SLIDES } from '@/lib/slides';
 import styles from './DeckIndex.module.css';
 
 interface Props {
@@ -45,7 +45,7 @@ export function DeckIndex({ open, onClose }: Props) {
             }}
           >
             <span className={styles.position}>
-              {String(slide.position).padStart(2, '0')} / 07
+              {String(slide.position).padStart(2, '0')} / {String(TOTAL_SLIDES).padStart(2, '0')}
             </span>
             <span className={styles.title}>{slide.title}</span>
             {slide.framing ? <span className={styles.framing}>{slide.framing}</span> : null}

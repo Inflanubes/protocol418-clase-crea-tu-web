@@ -34,7 +34,7 @@
 .tint[data-slide="app"]      { background: transparent; }
 .tint[data-slide="vscode"]   { background: radial-gradient(ellipse at center, rgba(234, 90, 31, 0.08), transparent 60%); }
 .tint[data-slide="terminal"] { background: radial-gradient(ellipse at center, rgba(38, 162, 105, 0.10), transparent 70%); }
-.tint[data-slide="intro"], .tint[data-slide="comparativa"], .tint[data-slide="cierre"] { background: transparent; }
+.tint[data-slide="intro"], .tint[data-slide="extender"], .tint[data-slide="comparativa"], .tint[data-slide="cierre"] { background: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   .lines { animation: none; opacity: 0.06; }

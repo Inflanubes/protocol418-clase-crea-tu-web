@@ -1,4 +1,4 @@
-export type SlideId = 'intro' | 'web' | 'app' | 'vscode' | 'terminal' | 'comparativa' | 'cierre';
+export type SlideId = 'intro' | 'web' | 'app' | 'vscode' | 'terminal' | 'extender' | 'comparativa' | 'cierre';
 
 export interface Slide {
   id: SlideId;
@@ -14,8 +14,9 @@ export const SLIDES: readonly Slide[] = [
   { id: 'app',         url: '/app',          position: 3, title: 'Claude como app',      framing: 'Cuando ya lo usas en serio.' },
   { id: 'vscode',      url: '/vscode',       position: 4, title: 'Claude en VS Code',    framing: 'Cuando empiezas a tocar código de verdad.' },
   { id: 'terminal',    url: '/terminal',     position: 5, title: 'Claude en la terminal',framing: 'Cuando te haces pro.' },
-  { id: 'comparativa', url: '/comparativa',  position: 6, title: 'Las cuatro maneras',   framing: 'Una mirada en frío.' },
-  { id: 'cierre',      url: '/cierre',       position: 7, title: 'Cierre',               framing: '' },
+  { id: 'extender',    url: '/extender',     position: 6, title: 'Extender Claude Code', framing: 'Cuando Claude no te basta.' },
+  { id: 'comparativa', url: '/comparativa',  position: 7, title: 'Las cuatro maneras',   framing: 'Una mirada en frío.' },
+  { id: 'cierre',      url: '/cierre',       position: 8, title: 'Cierre',               framing: '' },
 ] as const;
 
 export const TOTAL_SLIDES = SLIDES.length;
