@@ -1,14 +1,24 @@
-import { SlideShell } from '@/components/deck/SlideShell';
+import { FlavorSlide } from '@/components/flavor/FlavorSlide';
+import { TerminalMock } from '@/components/mocks/TerminalMock';
 import { SLIDES } from '@/lib/slides';
 
 export default function TerminalPage() {
   const slide = SLIDES.find((s) => s.id === 'terminal')!;
   return (
-    <SlideShell framing={slide.framing}>
-      <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '80px' }}>{slide.title}</h1>
-      <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-accent)', fontSize: '24px' }}>
-        claude (CLI)
-      </p>
-    </SlideShell>
+    <FlavorSlide
+      compact
+      framing={slide.framing}
+      title="Claude en la terminal"
+      identifier="claude (CLI)"
+      pros={[
+        'Scriptable y automatizable (CI, hooks, agentes)',
+        'Headless (puede correr sin UI, en servidores)',
+      ]}
+      contras={[
+        'Curva inicial más alta (terminal, npm, configuración)',
+        'Solo CLI (no hay UI gráfica para los que la prefieran)',
+      ]}
+      mock={<TerminalMock />}
+    />
   );
 }

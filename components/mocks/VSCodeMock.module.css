@@ -1,0 +1,72 @@
+.frame {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 160px 1fr 220px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+}
+
+.tree {
+  background: #181818;
+  border-right: 1px solid var(--color-border);
+  padding: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.treeHeading {
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  margin-bottom: var(--space-3);
+}
+
+.treeFile { padding: 2px var(--space-2); }
+.treeFileActive { color: var(--color-text); background: rgba(234,90,31,0.1); border-left: 2px solid var(--color-accent); }
+
+.editor {
+  background: #1a1a1a;
+  padding: var(--space-4);
+  color: var(--color-text);
+  overflow: hidden;
+  font-size: var(--fs-code);
+  line-height: 1.6;
+}
+
+.line { white-space: pre; }
+.added {
+  background: rgba(38, 162, 105, 0.15);
+  border-left: 2px solid #26a269;
+  padding-left: var(--space-2);
+  margin-left: -2px;
+}
+
+.chat {
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow: hidden;
+}
+
+.chatHeading {
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--color-accent);
+}
+
+.chatMessage {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chatRole { font-size: var(--fs-eyebrow); color: var(--color-text-muted); text-transform: uppercase; }
+.chatText { color: var(--color-text); }
