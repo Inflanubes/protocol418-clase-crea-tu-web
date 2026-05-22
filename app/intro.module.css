@@ -1,0 +1,48 @@
+.hero {
+  font-family: var(--font-display);
+  font-size: clamp(96px, 18vw, 240px);
+  font-weight: 700;
+  letter-spacing: var(--tracking-display);
+  text-align: center;
+  line-height: 1;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-4);
+}
+
+.chip strong {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.cta {
+  margin-top: var(--space-16);
+  display: flex;
+  justify-content: center;
+}
+
+.ctaLink {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-6);
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.ctaLink:hover { background: var(--color-accent); color: var(--color-bg); }

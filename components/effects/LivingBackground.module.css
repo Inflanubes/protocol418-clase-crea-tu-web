@@ -1,0 +1,27 @@
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at center, var(--color-surface) 0%, var(--color-bg) 70%);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lines {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0.12;
+  animation: drift 80s linear infinite;
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-25%, -25%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lines { animation: none; opacity: 0.06; }
+}

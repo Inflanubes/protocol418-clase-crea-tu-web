@@ -1,0 +1,50 @@
+/* styles/tokens.css — single source of truth for brand tokens */
+:root {
+  /* Colors */
+  --color-bg:          #0B0B0B;
+  --color-surface:     #141414;
+  --color-border:      #1F1F1F;
+  --color-accent:      #EA5A1F;
+  --color-text:        #F0EBE2;
+  --color-text-muted:  #7A7A7A;
+
+  /* Type families — alimentadas por next/font en app/layout.tsx */
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-body:    var(--font-inter), system-ui, sans-serif;
+  --font-mono:    var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Type scale */
+  --fs-display:  64px;
+  --fs-h1:       36px;
+  --fs-h2:       24px;
+  --fs-body-lg:  17px;
+  --fs-body:     16px;
+  --fs-small:    14px;
+  --fs-caption:  12px;
+  --fs-eyebrow:  11px;
+  --fs-code:     14px;
+
+  /* Tracking */
+  --tracking-tight:     -0.01em;
+  --tracking-display:    0.05em;
+  --tracking-uppercase:  0.15em;
+  --tracking-eyebrow:    0.25em;
+  --tracking-tagline:    0.3em;
+
+  /* Spacing (8pt grid) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Radii */
+  --radius-sm:  4px;
+  --radius:     8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+}
