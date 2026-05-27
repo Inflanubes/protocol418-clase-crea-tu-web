@@ -80,3 +80,35 @@
   pointer-events: none;
   opacity: 0.55;
 }
+
+/* Stage 1 — hero enters huge, holds, spins 360° on Y, then scales down and migrates up.
+   Total: 3.0s (enter 0.3s → hold 0.3s → spin 1.0s → migrate 0.6s → settled 0.8s before chips/CTA reveal in later tasks). */
+
+.hero {
+  /* Parent provides the 3D depth for the rotateY transform. */
+  perspective: 1200px;
+}
+
+.glyph {
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+  animation:
+    glyphEnter 300ms ease-out 0ms both,
+    glyphSpin 1000ms cubic-bezier(0.4, 0, 0.2, 1) 600ms both,
+    glyphMigrate 600ms cubic-bezier(0.65, 0, 0.35, 1) 2400ms both;
+}
+
+@keyframes glyphEnter {
+  from { opacity: 0; transform: scale(1.6); }
+  to   { opacity: 1; transform: scale(1.6); }
+}
+
+@keyframes glyphSpin {
+  from { transform: scale(1.6) rotateY(0deg); }
+  to   { transform: scale(1.6) rotateY(360deg); }
+}
+
+@keyframes glyphMigrate {
+  from { transform: scale(1.6) rotateY(360deg); }
+  to   { transform: scale(1)   rotateY(360deg); }
+}
