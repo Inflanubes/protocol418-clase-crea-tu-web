@@ -112,3 +112,18 @@
   from { transform: scale(1.6) rotateY(360deg); }
   to   { transform: scale(1)   rotateY(360deg); }
 }
+
+/* Stage 2 — chips fade-in + slide-up, staggered by --i (set per-chip in TSX).
+   First chip starts at 1.4s; each subsequent at +150ms. Duration 400ms each. */
+
+.chip {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: chipEnter 400ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
+  animation-delay: calc(1400ms + var(--i, 0) * 150ms);
+}
+
+@keyframes chipEnter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
