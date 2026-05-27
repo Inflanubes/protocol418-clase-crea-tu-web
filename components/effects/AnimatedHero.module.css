@@ -127,3 +127,19 @@
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Stage 3 — CTAs fade in after the migration completes.
+   Primary lands first to anchor attention, secondary follows 100ms later. */
+
+.ctaPrimary,
+.ctaSecondary {
+  opacity: 0;
+  animation: ctaEnter 250ms ease-out both;
+}
+.ctaPrimary   { animation-delay: 3000ms; }
+.ctaSecondary { animation-delay: 3100ms; }
+
+@keyframes ctaEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
