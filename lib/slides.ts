@@ -9,7 +9,7 @@ export interface Slide {
 }
 
 export const SLIDES: readonly Slide[] = [
-  { id: 'herramientas', url: '/',             position: 1, title: 'Herramientas',         framing: 'El stack que usamos.' },
+  { id: 'herramientas', url: '/',             position: 1, title: 'Herramientas',         framing: '' },
   { id: 'intro',        url: '/intro',        position: 2, title: 'Intro',                framing: 'Hay 4 maneras de hablar con Claude Code. Vamos a vivirlas.' },
   { id: 'web',          url: '/web',          position: 3, title: 'Claude en la web',     framing: 'Cuando lo pruebas por primera vez.' },
   { id: 'app',          url: '/app',          position: 4, title: 'Claude como app',      framing: 'Cuando ya lo usas en serio.' },

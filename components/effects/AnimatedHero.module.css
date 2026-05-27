@@ -1,17 +1,59 @@
 .root {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-8);
   width: 100%;
+  flex: 1;
+  padding-top: 18vh;
+  padding-bottom: var(--space-8);
 }
 
-/* Hero — final settled position (small, top of stack).
-   Task 3 adds the big initial state + spin + migrate animation; for now this is just the destination. */
-.hero {
+/* Header lockup — top-left of body area. Becomes the slide's identity (small 418 + class title).
+   Hidden initially; fades in as the big animated glyph flies up-left and out. */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  opacity: 0;
+  animation: headerEnter 500ms ease-out 1700ms both;
+}
+.headerGlyph {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  letter-spacing: var(--tracking-display);
+  line-height: 1;
+  color: var(--color-text);
+}
+.headerTitle {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h2);
+  color: var(--color-accent);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1;
+}
+
+@keyframes headerEnter {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Big animated 418 — absolutely positioned, fills the body area, glyph centered via flex.
+   Plays enter → spin → migrate-up-left-and-fade-out. */
+.hero {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  perspective: 1200px;
+  pointer-events: none;
 }
 .glyph {
   font-family: var(--font-display);
@@ -20,57 +62,128 @@
   letter-spacing: var(--tracking-display);
   line-height: 1;
   display: inline-block;
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+  animation:
+    glyphEnter 300ms ease-out 0ms both,
+    glyphSpin 1000ms cubic-bezier(0.4, 0, 0.2, 1) 600ms both,
+    glyphMigrate 700ms cubic-bezier(0.65, 0, 0.35, 1) 1600ms both;
 }
 
-/* Chips — same visual rhythm as intro.module.css */
+@keyframes glyphEnter {
+  from { opacity: 0; transform: translate(0, 0) scale(1.6) rotateY(0deg); }
+  to   { opacity: 1; transform: translate(0, 0) scale(1.6) rotateY(0deg); }
+}
+
+@keyframes glyphSpin {
+  from { transform: translate(0, 0) scale(1.6) rotateY(0deg); }
+  to   { transform: translate(0, 0) scale(1.6) rotateY(360deg); }
+}
+
+/* Migration: flies up-left while shrinking and fading.
+   translate is FIRST so it's applied in unscaled screen-space units; scale and rotate apply after. */
+@keyframes glyphMigrate {
+  from { opacity: 1; transform: translate(0, 0)        scale(1.6)  rotateY(360deg); }
+  to   { opacity: 0; transform: translate(-45vw, -38vh) scale(0.35) rotateY(360deg); }
+}
+
+/* Chips — same visual rhythm as intro.module.css. Appear after the glyph has flown away. */
 .chips {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-4);
+  margin-top: var(--space-16);
+  opacity: 1;
 }
 .chip {
   font-family: var(--font-mono);
-  font-size: var(--fs-body);
+  font-size: var(--fs-body-lg);
   color: var(--color-text-muted);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-3) var(--space-6);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: chipEnter 400ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
+  animation-delay: calc(2900ms + var(--i, 0) * 100ms);
 }
 .chip strong {
   color: var(--color-accent);
   font-weight: 500;
 }
 
-/* CTAs — primary mirrors intro CTA, secondary is dimmer */
+@keyframes chipEnter {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Descriptor — two punch lines + explanatory text between chips and CTAs */
+.descriptor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+  max-width: 60ch;
+  opacity: 0;
+  animation: descriptorEnter 400ms ease-out 2400ms both;
+}
+.descriptorPunch {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.1;
+  margin: 0;
+}
+.descriptorText {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-lg);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.5;
+  margin: var(--space-4) 0 0 0;
+}
+
+@keyframes descriptorEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* CTAs — pinned to bottom of the body area via margin-top:auto */
 .ctas {
-  margin-top: var(--space-8);
+  margin-top: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--space-4);
 }
-.ctaPrimary {
+.ctaPrimary,
+.ctaSecondary {
   font-family: var(--font-mono);
   font-size: var(--fs-body);
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
   border-radius: var(--radius);
   padding: var(--space-3) var(--space-6);
+  opacity: 0;
+  animation: ctaEnter 250ms ease-out both;
+}
+.ctaPrimary {
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
   transition: background 160ms ease, color 160ms ease;
+  animation-delay: 3800ms;
 }
 .ctaPrimary:hover {
   background: var(--color-accent);
   color: var(--color-bg);
 }
 .ctaSecondary {
-  font-family: var(--font-mono);
-  font-size: var(--fs-body);
   color: var(--color-text-muted);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: var(--space-3) var(--space-6);
   transition: color 160ms ease, border-color 160ms ease;
+  animation-delay: 3900ms;
 }
 .ctaSecondary:hover {
   color: var(--color-text);
@@ -81,76 +194,17 @@
   opacity: 0.55;
 }
 
-/* Stage 1 — hero enters huge, holds, spins 360° on Y, then scales down and migrates up.
-   Total: 3.0s (enter 0.3s → hold 0.3s → spin 1.0s → migrate 0.6s → settled 0.8s before chips/CTA reveal in later tasks). */
-
-.hero {
-  /* Parent provides the 3D depth for the rotateY transform. */
-  perspective: 1200px;
-}
-
-.glyph {
-  transform-origin: 50% 50%;
-  backface-visibility: hidden;
-  animation:
-    glyphEnter 300ms ease-out 0ms both,
-    glyphSpin 1000ms cubic-bezier(0.4, 0, 0.2, 1) 600ms both,
-    glyphMigrate 600ms cubic-bezier(0.65, 0, 0.35, 1) 2400ms both;
-}
-
-@keyframes glyphEnter {
-  from { opacity: 0; transform: scale(1.6); }
-  to   { opacity: 1; transform: scale(1.6); }
-}
-
-@keyframes glyphSpin {
-  from { transform: scale(1.6) rotateY(0deg); }
-  to   { transform: scale(1.6) rotateY(360deg); }
-}
-
-@keyframes glyphMigrate {
-  from { transform: scale(1.6) rotateY(360deg); }
-  to   { transform: scale(1)   rotateY(360deg); }
-}
-
-/* Stage 2 — chips fade-in + slide-up, staggered by --i (set per-chip in TSX).
-   First chip starts at 1.4s; each subsequent at +150ms. Duration 400ms each. */
-
-.chip {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: chipEnter 400ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
-  animation-delay: calc(1400ms + var(--i, 0) * 150ms);
-}
-
-@keyframes chipEnter {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Stage 3 — CTAs fade in after the migration completes.
-   Primary lands first to anchor attention, secondary follows 100ms later. */
-
-.ctaPrimary,
-.ctaSecondary {
-  opacity: 0;
-  animation: ctaEnter 250ms ease-out both;
-}
-.ctaPrimary   { animation-delay: 3000ms; }
-.ctaSecondary { animation-delay: 3100ms; }
-
 @keyframes ctaEnter {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* DIAGNOSTIC: reduced-motion block left disabled until we figure out why Chrome triggered it on this machine.
 @media (prefers-reduced-motion: reduce) {
-  .glyph,
-  .chip,
-  .ctaPrimary,
-  .ctaSecondary {
+  .glyph, .chip, .ctaPrimary, .ctaSecondary, .header {
     animation: none;
     opacity: 1;
     transform: none;
   }
 }
+*/
